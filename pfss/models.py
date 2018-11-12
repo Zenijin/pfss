@@ -390,7 +390,7 @@ class Creature(models.Model):
     def TextRender(self, baseNumber, text, useFormatNumber=False):
         try:
             BASE_PLUS = int(text.split('{{BASE_PLUS_')[1].split('}')[0]) + baseNumber
-            return re.sub('{{BASE_PLUS_[0-9]*?}}', str(BASE_PLUS) if not useFormatNumber else formatNumber(BASE_PLUS), text)
+            return re.sub('\{\{BASE_PLUS_[0-9]{1,}\}\}', str(BASE_PLUS) if not useFormatNumber else formatNumber(BASE_PLUS), text)
         except IndexError:
             pass
         return text
