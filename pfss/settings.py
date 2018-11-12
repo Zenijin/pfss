@@ -1,5 +1,5 @@
 import os
-from local_settings import *
+from .local_settings import *
 
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
