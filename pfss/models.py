@@ -309,19 +309,19 @@ class SpecialAbility(models.Model):
         try:
             STR_MOD = int(returnText.split('{{STR_MOD_')[1].split('}')[0])
             STR_MOD += creature.StrMod
-            returnText = "butts"
+            returnText = re.sub('\{\{STR_MOD_[0-9]{1,}\}\}', str(STR_MOD), returnText)
         except IndexError:
             pass
         try:
             CHA_MOD = int(returnText.split('{{CHA_MOD_')[1].split('}')[0])
             CHA_MOD += creature.ChaMod
-            returnText = re.sub('{{CHA_MOD_[0-9]*?}}', str(CHA_MOD), returnText)
+            returnText = re.sub('\{\{CHA_MOD_[0-9]{1,}\}\}', str(CHA_MOD), returnText)
         except IndexError:
             pass
         try:
             CON_MOD = int(returnText.split('{{CON_MOD_')[1].split('}')[0])
             CON_MOD += creature.ConMod
-            returnText = re.sub('{{CON_MOD_[0-9]*?}}', str(CON_MOD), returnText)
+            returnText = re.sub('\{\{CON_MOD_[0-9]{1,}\}\}', str(CON_MOD), returnText)
         except IndexError:
             pass
         returnText = returnText.replace( '{{HD}}', str(creature.HD) )
