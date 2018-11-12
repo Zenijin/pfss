@@ -309,7 +309,7 @@ class SpecialAbility(models.Model):
         try:
             STR_MOD = int(returnText.split('{{STR_MOD_')[1].split('}')[0])
             STR_MOD += creature.StrMod
-            returnText = "butts" #re.sub('{{STR_MOD_[0-9]*?}}', str(STR_MOD), returnText)
+            returnText = "butts"
         except IndexError:
             pass
         try:
